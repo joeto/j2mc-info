@@ -14,3 +14,6 @@ commands:
   rules:
     description: give me the rules.
     usage: /help
+  reloadinfo:
+    description: reloads data from config.yml
+    usage: /reloadinfo

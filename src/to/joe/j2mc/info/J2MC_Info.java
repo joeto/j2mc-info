@@ -6,6 +6,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import to.joe.j2mc.info.command.HelpCommand;
 import to.joe.j2mc.info.command.IntroCommand;
+import to.joe.j2mc.info.command.ReloadInfoCommand;
 import to.joe.j2mc.info.command.RulesCommand;
 
 public class J2MC_Info extends JavaPlugin{
@@ -16,6 +17,19 @@ public class J2MC_Info extends JavaPlugin{
 	
 	public void onEnable(){
 		this.getConfig().options().copyDefaults(true);
+		this.ReadData();
+		this.getCommand("help").setExecutor(new HelpCommand(this));
+		this.getCommand("intro").setExecutor(new IntroCommand(this));
+		this.getCommand("rules").setExecutor(new RulesCommand(this));
+		this.getCommand("reloadinfo").setExecutor(new ReloadInfoCommand(this));
+		this.getLogger().info("Info module enabled");
+	}
+	
+	public void onDisable(){
+		this.getLogger().info("Info module disabled");
+	}
+	
+	public void ReadData(){
 		this.rules = this.getConfig().getStringList("rules");
 		if(rules == null){
 			this.ShutDownEverything();
@@ -28,14 +42,6 @@ public class J2MC_Info extends JavaPlugin{
 		if(IntroLines == null){
 			this.ShutDownEverything();
 		}
-		this.getCommand("help").setExecutor(new HelpCommand(this));
-		this.getCommand("intro").setExecutor(new IntroCommand(this));
-		this.getCommand("rules").setExecutor(new RulesCommand(this));
-		this.getLogger().info("Info module enabled");
-	}
-	
-	public void onDisable(){
-		this.getLogger().info("Info module disabled");
 	}
 	
 	public void ShutDownEverything(){
