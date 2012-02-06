@@ -1,0 +1,16 @@
+name: J2MC_Info
+main: to.joe.j2mc.info.J2MC_Info
+version: 0.0prealpha
+website: http://forums.joe.to
+author: J2 Minecraft Plugin Team
+description: Information module
+commands:
+  help:
+    description: help!
+    usage: /help
+  intro:
+    description: gives a basic intro
+    usage: /intro
+  rules:
+    description: give me the rules.
+    usage: /help
