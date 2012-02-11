@@ -1,10 +1,10 @@
-rules:
-- We have lazy senior staff.
-- There are no rules
-- LOLOLOLOL
-help:
-- Help yourself sunny.
-- Why are you still reading me?
-intro:
-- Kill babies
-- Fry and eat them
+rules: |
+    We have lazy senior staff.
+    There are no rules
+    LOLOLOLOL
+help: |
+    Help yourself sunny.
+    Why are you still reading me?
+intro: |
+    Kill babies
+    Fry and eat them
