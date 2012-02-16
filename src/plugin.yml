@@ -17,3 +17,6 @@ commands:
   reloadinfo:
     description: reloads data from config.yml
     usage: /reloadinfo
+  worldguardhelp:
+    description: gives some basic protection help
+    usage: /wordguardhelp
