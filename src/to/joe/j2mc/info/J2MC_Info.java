@@ -3,18 +3,23 @@ package to.joe.j2mc.info;
 import java.util.Arrays;
 import java.util.List;
 
+import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import to.joe.j2mc.core.J2MC_Manager;
 import to.joe.j2mc.info.command.HelpCommand;
 import to.joe.j2mc.info.command.IntroCommand;
 import to.joe.j2mc.info.command.ReloadInfoCommand;
 import to.joe.j2mc.info.command.RulesCommand;
+import to.joe.j2mc.info.command.WorldGuardHelpCommand;
 
 public class J2MC_Info extends JavaPlugin {
 
     public List<String> rules;
     public List<String> HelpLines;
     public List<String> IntroLines;
+    public List<String> WorldguardLines;
+    public String[] RepeatingBroadcasts;
 
     @Override
     public void onDisable() {
@@ -29,6 +34,23 @@ public class J2MC_Info extends JavaPlugin {
         this.getCommand("intro").setExecutor(new IntroCommand(this));
         this.getCommand("rules").setExecutor(new RulesCommand(this));
         this.getCommand("reloadinfo").setExecutor(new ReloadInfoCommand(this));
+        this.getCommand("worldguardhelp").setExecutor(new WorldGuardHelpCommand(this));
+        
+        this.getServer().getScheduler().scheduleAsyncDelayedTask(this, new Runnable() {
+			int currentLine = 0;
+			@Override
+			public void run() {
+				for(Player plr : J2MC_Manager.getVisibility().getOnlinePlayers(null)){
+					plr.sendMessage(RepeatingBroadcasts[currentLine]);
+					if(currentLine == (RepeatingBroadcasts.length - 1)){
+						currentLine = 0;
+					}else{
+						currentLine++;
+					}
+				}	
+			}
+		}, 4800);
+        
         this.getLogger().info("Info module enabled");
     }
 
@@ -44,6 +66,14 @@ public class J2MC_Info extends JavaPlugin {
         this.IntroLines = Arrays.asList(this.getConfig().getString("intro").split("\n"));
         if (this.IntroLines == null) {
             this.shutDownEverything();
+        }
+        this.RepeatingBroadcasts = this.getConfig().getString("repeatmessages").split("\n");
+        if (this.RepeatingBroadcasts == null) {
+        	this.shutDownEverything();
+        }
+        this.WorldguardLines = Arrays.asList(this.getConfig().getString("worldguardhelp").split("\n"));
+        if (this.WorldguardLines == null) {
+        	this.shutDownEverything();
         }
     }
 
