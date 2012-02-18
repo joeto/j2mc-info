@@ -9,7 +9,12 @@ help: |
 intro: |
     Kill babies
     Fry and eat them
+repeatmessages: |
+    OMG ROFL THIS IS A REPEATING MESSAGE
+    HI, I LIKE TO REPEAT
+    Why are you looking at me?!
+    Hi :3
 worldguardhelp: |
-	To get your area protected and free from griefers, mark opposite corners with orange wool and then, when standing at one of your orange pillars, type /report worldguard What you want your building to be called.
-	If you'd like to see if the area you are in is protected, right-click it with string in your hand. 
-	If you'd like to add members to your worldguard region, type /region addmember Region name member name. 
+    To get your area protected and free from griefers, mark opposite corners with orange wool and then, when standing at one of your orange pillars, type /report worldguard What you want your building to be called.
+    If you'd like to see if the area you are in is protected, right-click it with string in your hand. 
+    If you'd like to add members to your worldguard region, type /region addmember Region name member name. 
