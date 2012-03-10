@@ -20,3 +20,6 @@ commands:
   worldguardhelp:
     description: gives some basic protection help
     usage: /wordguardhelp
+permissions:
+  j2mc.info.reload:
+    descriptions: gives access to /reloadinfo

@@ -17,7 +17,7 @@ public class ReloadInfoCommand extends MasterCommand {
 
     @Override
     public void exec(CommandSender sender, String commandName, String[] args, Player player, boolean isPlayer) {
-        if (sender.hasPermission("j2mc.senior")) {
+        if (sender.hasPermission("j2mc.info.reload")) {
             this.plugin.readData();
         }
     }
