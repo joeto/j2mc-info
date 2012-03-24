@@ -19,7 +19,7 @@ public class J2MC_Info extends JavaPlugin {
     public List<String> HelpLines;
     public List<String> IntroLines;
     public List<String> WorldguardLines;
-    public String[] RepeatingBroadcasts;
+    public List<String> RepeatingBroadcasts;
 
     @Override
     public void onDisable() {
@@ -35,22 +35,23 @@ public class J2MC_Info extends JavaPlugin {
         this.getCommand("rules").setExecutor(new RulesCommand(this));
         this.getCommand("reloadinfo").setExecutor(new ReloadInfoCommand(this));
         this.getCommand("worldguardhelp").setExecutor(new WorldGuardHelpCommand(this));
-        
+
         this.getServer().getScheduler().scheduleAsyncDelayedTask(this, new Runnable() {
-			int currentLine = 0;
-			@Override
-			public void run() {
-				for(Player plr : J2MC_Manager.getVisibility().getOnlinePlayers(null)){
-					plr.sendMessage(RepeatingBroadcasts[currentLine]);
-					if(currentLine == (RepeatingBroadcasts.length - 1)){
-						currentLine = 0;
-					}else{
-						currentLine++;
-					}
-				}	
-			}
-		}, 4800);
-        
+            int currentLine = 0;
+
+            @Override
+            public void run() {
+                for (final Player plr : J2MC_Manager.getVisibility().getOnlinePlayers(null)) {
+                    plr.sendMessage(J2MC_Info.this.RepeatingBroadcasts.get(this.currentLine));
+                    if (this.currentLine == (J2MC_Info.this.RepeatingBroadcasts.size() - 1)) {
+                        this.currentLine = 0;
+                    } else {
+                        this.currentLine++;
+                    }
+                }
+            }
+        }, 4800);
+
         this.getLogger().info("Info module enabled");
     }
 
@@ -67,13 +68,13 @@ public class J2MC_Info extends JavaPlugin {
         if (this.IntroLines == null) {
             this.shutDownEverything();
         }
-        this.RepeatingBroadcasts = this.getConfig().getString("repeatmessages").split("\n");
+        this.RepeatingBroadcasts = Arrays.asList(this.getConfig().getString("repeatmessages").split("\n"));
         if (this.RepeatingBroadcasts == null) {
-        	this.shutDownEverything();
+            this.shutDownEverything();
         }
         this.WorldguardLines = Arrays.asList(this.getConfig().getString("worldguardhelp").split("\n"));
         if (this.WorldguardLines == null) {
-        	this.shutDownEverything();
+            this.shutDownEverything();
         }
     }
 
