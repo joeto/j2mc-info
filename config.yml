@@ -2,13 +2,6 @@ rules: |
     We have very simple rules
     Don't ruin other peoples fun
     No bigotry, no cheating, no hacking
-help: |
-    Type /rules to get the rules of the server.
-    Type /worldguardhelp for help with worldguarding!
-    Type /trust for help with getting trusted!
-intro: |
-    Kill babies
-    Fry and eat them
 repeatmessages: |
     Visit our community: http://forums.joe.to
     Donors can always join. http://donate.joe.to

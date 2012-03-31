@@ -7,6 +7,7 @@ import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
+import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -15,7 +16,7 @@ import to.joe.j2mc.info.command.ReloadInfoCommand;
 import to.joe.j2mc.info.command.RulesCommand;
 import to.joe.j2mc.info.command.WorldGuardHelpCommand;
 
-public class J2MC_Info extends JavaPlugin {
+public class J2MC_Info extends JavaPlugin implements Listener {
 
     public List<String> rules;
     public List<String> worldguardLines;
@@ -50,7 +51,7 @@ public class J2MC_Info extends JavaPlugin {
                 }
             }
         }, 4800);
-
+        this.getServer().getPluginManager().registerEvents(this, this);
         this.getLogger().info("Info module enabled");
     }
 
