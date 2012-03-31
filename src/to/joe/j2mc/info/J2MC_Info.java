@@ -3,7 +3,11 @@ package to.joe.j2mc.info;
 import java.util.Arrays;
 import java.util.List;
 
+import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
+import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import to.joe.j2mc.core.J2MC_Manager;
@@ -37,7 +41,7 @@ public class J2MC_Info extends JavaPlugin {
             @Override
             public void run() {
                 for (final Player plr : J2MC_Manager.getVisibility().getOnlinePlayers(null)) {
-                    plr.sendMessage(J2MC_Info.this.repeatingBroadcasts.get(this.currentLine));
+                    plr.sendMessage(ChatColor.AQUA + J2MC_Info.this.repeatingBroadcasts.get(this.currentLine));
                     if (this.currentLine == (J2MC_Info.this.repeatingBroadcasts.size() - 1)) {
                         this.currentLine = 0;
                     } else {
@@ -63,6 +67,13 @@ public class J2MC_Info extends JavaPlugin {
     public void shutDownEverything() {
         this.getLogger().severe("Config file is derp. I repeat, config is derp.");
         this.getServer().getPluginManager().disablePlugin(this);
+    }
+
+    @EventHandler(priority = EventPriority.HIGH)
+    public void onJoin(PlayerJoinEvent event) {
+        for (final String line : this.motd) {
+            event.getPlayer().sendMessage(line);
+        }
     }
 
 }
