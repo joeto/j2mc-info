@@ -30,7 +30,7 @@ public class J2MC_Info extends JavaPlugin implements Listener {
 
     @Override
     public void onEnable() {
-        this.getConfig().options().copyDefaults(true);
+        this.saveDefaultConfig();
         this.readData();
         this.getCommand("rules").setExecutor(new RulesCommand(this));
         this.getCommand("reloadinfo").setExecutor(new ReloadInfoCommand(this));
