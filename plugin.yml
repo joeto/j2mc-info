@@ -5,21 +5,21 @@ website: http://forums.joe.to
 author: J2 Minecraft Plugin Team
 description: Information module
 commands:
-  help:
-    description: help!
-    usage: /help
-  intro:
-    description: gives a basic intro
-    usage: /intro
   rules:
     description: give me the rules.
     usage: /help
   reloadinfo:
     description: reloads data from config.yml
     usage: /reloadinfo
+    permission: j2mc.info.reload
+    permission-message: You are not senior staff
   worldguardhelp:
     description: gives some basic protection help
     usage: /wordguardhelp
+    permission: j2mc.info.worldguard
+    permission-message: Not functional on this server
 permissions:
   j2mc.info.reload:
     descriptions: gives access to /reloadinfo
+  j2mc.info.worldguard:
+    description: Get access to the worldguard info

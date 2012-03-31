@@ -17,7 +17,7 @@ public class WorldGuardHelpCommand extends MasterCommand {
 
     @Override
     public void exec(CommandSender sender, String commandName, String[] args, Player player, boolean isPlayer) {
-        for (final String message : this.plugin.WorldguardLines) {
+        for (final String message : this.plugin.worldguardLines) {
             sender.sendMessage(ChatColor.RED + message);
         }
     }
