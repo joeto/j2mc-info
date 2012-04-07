@@ -12,6 +12,7 @@ import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import to.joe.j2mc.core.J2MC_Manager;
+import to.joe.j2mc.info.command.PlayerListCommand;
 import to.joe.j2mc.info.command.ReloadInfoCommand;
 import to.joe.j2mc.info.command.RulesCommand;
 import to.joe.j2mc.info.command.WorldGuardHelpCommand;
@@ -35,6 +36,7 @@ public class J2MC_Info extends JavaPlugin implements Listener {
         this.getCommand("rules").setExecutor(new RulesCommand(this));
         this.getCommand("reloadinfo").setExecutor(new ReloadInfoCommand(this));
         this.getCommand("worldguardhelp").setExecutor(new WorldGuardHelpCommand(this));
+        this.getCommand("who").setExecutor(new PlayerListCommand(this));
 
         this.getServer().getScheduler().scheduleAsyncDelayedTask(this, new Runnable() {
             int currentLine = 0;

@@ -18,6 +18,10 @@ commands:
     usage: /wordguardhelp
     permission: j2mc.info.worldguard
     permission-message: Not functional on this server
+  who:
+    aliases: [playerlist]
+    description: oh god player list
+    usage: /who
 permissions:
   j2mc.info.reload:
     descriptions: gives access to /reloadinfo
