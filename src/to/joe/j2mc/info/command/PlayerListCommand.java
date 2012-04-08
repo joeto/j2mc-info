@@ -30,13 +30,17 @@ public class PlayerListCommand extends MasterCommand {
             StringBuilder builder = new StringBuilder();
             for (Player pl : plugin.getServer().getOnlinePlayers()) {
                 if (!J2MC_Manager.getVisibility().isVanished(pl)) {
-                    String playerName = pl.getDisplayName();
-                    builder.append(playerName + ChatColor.WHITE + ", ");
+                    String toAdd;
+                    toAdd = pl.getDisplayName();
+                    if(J2MC_Manager.getPermissions().hasFlag(pl.getName(), 'd')){
+                        toAdd = ChatColor.GOLD + pl.getName();
+                    }
+                    builder.append(toAdd + ChatColor.WHITE + ", ");
                     if (builder.length() > 119) {
-                        builder.substring(0, (builder.length() - ((playerName + ChatColor.WHITE + ", ").length())));
+                        builder.substring(0, (builder.length() - ((toAdd + ChatColor.WHITE + ", ").length())));
                         sender.sendMessage(builder.toString());
                         builder = new StringBuilder();
-                        builder.append(playerName + ChatColor.WHITE + ", ");
+                        builder.append(toAdd + ChatColor.WHITE + ", ");
                     }
                 }
             }
@@ -51,19 +55,19 @@ public class PlayerListCommand extends MasterCommand {
                 if(J2MC_Manager.getPermissions().hasFlag(pl.getName(), 't')){
                     toAdd = ChatColor.DARK_GREEN + pl.getName();
                 }
-                else if(J2MC_Manager.getPermissions().hasFlag(pl.getName(), 'd')){
+                if(J2MC_Manager.getPermissions().hasFlag(pl.getName(), 'd')){
                     toAdd = ChatColor.GOLD + pl.getName();
                 }
-                else if(pl.hasPermission("j2mc-chat.mute")){
+                if(pl.hasPermission("j2mc-chat.mute")){
                     toAdd = ChatColor.YELLOW + pl.getName();
                 }
-                else if(pl.hasPermission("j2mc.core.admin")){
+                if(pl.hasPermission("j2mc.core.admin")){
                     toAdd = ChatColor.RED + pl.getName();
                 }
-                else if(J2MC_Manager.getVisibility().isVanished(pl)){
+                if(J2MC_Manager.getVisibility().isVanished(pl)){
                     toAdd = ChatColor.AQUA + pl.getName();
                 }
-                else if(pl.hasPermission("j2mc-chat.admin.nsa")){
+                if(pl.hasPermission("j2mc-chat.admin.nsa")){
                     toAdd += ChatColor.DARK_AQUA + "«»";
                 }
                 builder.append(toAdd + ChatColor.WHITE + ", ");
