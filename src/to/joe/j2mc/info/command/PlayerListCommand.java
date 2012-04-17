@@ -37,7 +37,7 @@ public class PlayerListCommand extends MasterCommand {
                     }
                     builder.append(toAdd + ChatColor.WHITE + ", ");
                     if (builder.length() > 119) {
-                        builder.substring(0, (builder.length() - ((toAdd + ChatColor.WHITE + ", ").length())));
+                        builder.setLength(builder.length() - (toAdd + ChatColor.WHITE + ", ").length());
                         sender.sendMessage(builder.toString());
                         builder = new StringBuilder();
                         builder.append(toAdd + ChatColor.WHITE + ", ");
@@ -72,7 +72,7 @@ public class PlayerListCommand extends MasterCommand {
                 }
                 builder.append(toAdd + ChatColor.WHITE + ", ");
                 if (builder.length() > 119) {
-                    builder.substring(0, (builder.length() - (toAdd + ChatColor.WHITE + ", ").length()));
+                    builder.setLength(builder.length() - (toAdd + ChatColor.WHITE + ", ").length());
                     sender.sendMessage(builder.toString());
                     builder = new StringBuilder();
                     builder.append(toAdd + ChatColor.WHITE + ", ");
