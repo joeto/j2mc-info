@@ -36,7 +36,7 @@ public class PlayerListCommand extends MasterCommand {
                         toAdd = ChatColor.GOLD + pl.getName();
                     }
                     builder.append(toAdd + ChatColor.WHITE + ", ");
-                    if (builder.length() > 119) {
+                    if (builder.length() > 75) {
                         builder.setLength(builder.length() - (toAdd + ChatColor.WHITE + ", ").length());
                         sender.sendMessage(builder.toString());
                         builder = new StringBuilder();
@@ -71,7 +71,7 @@ public class PlayerListCommand extends MasterCommand {
                     toAdd += ChatColor.DARK_AQUA + "«»";
                 }
                 builder.append(toAdd + ChatColor.WHITE + ", ");
-                if (builder.length() > 119) {
+                if (builder.length() > 75) {
                     builder.setLength(builder.length() - (toAdd + ChatColor.WHITE + ", ").length());
                     sender.sendMessage(builder.toString());
                     builder = new StringBuilder();
