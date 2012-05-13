@@ -75,8 +75,11 @@ public class PlayerListCommand extends MasterCommand {
                 if(J2MC_Manager.getVisibility().isVanished(pl)){
                     toAdd = ChatColor.AQUA + pl.getName();
                 }
-                if(pl.hasPermission("j2mc-chat.admin.nsa")){
+                if(J2MC_Manager.getPermissions().hasFlag(pl.getName(), 'N')){
                     toAdd += ChatColor.DARK_AQUA + "«»";
+                }
+                if(J2MC_Manager.getPermissions().hasFlag(pl.getName(), 'k')){
+                    toAdd += ChatColor.RED + "&";
                 }
                 builder.append(toAdd + ChatColor.WHITE + ", ");
                 if (builder.length() > 75) {
