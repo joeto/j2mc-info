@@ -29,7 +29,7 @@ public class LastSeenCommand extends MasterCommand {
             return;
         }
         OfflinePlayer offlineplayer = plugin.getServer().getOfflinePlayer(args[0]);
-        long start = offlineplayer.getLastPlayed();
+        long start = offlineplayer.getLastPlayed() / 1000;
         if (start == 0) {
             sender.sendMessage(ChatColor.RED + "That user has never played on this server");
             return;
