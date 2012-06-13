@@ -37,7 +37,7 @@ public class LastSeenCommand extends MasterCommand {
         long end = System.currentTimeMillis() / 1000;
         
         StringBuilder sb = new StringBuilder();
-        long diffInSeconds = (end - start) / 1000;
+        long diffInSeconds = (end - start);
 
         long sec = (diffInSeconds >= 60 ? diffInSeconds % 60 : diffInSeconds);
         long min = (diffInSeconds = (diffInSeconds / 60)) >= 60 ? diffInSeconds % 60 : diffInSeconds;
