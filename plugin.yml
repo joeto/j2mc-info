@@ -22,6 +22,10 @@ commands:
     aliases: [playerlist]
     description: oh god player list
     usage: /who
+  lastseen:
+    alias: [ls]
+    description: gets the time player was last seen
+    usage: /lastseen playername
 permissions:
   j2mc.info.reload:
     descriptions: gives access to /reloadinfo
