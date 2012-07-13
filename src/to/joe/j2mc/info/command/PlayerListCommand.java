@@ -66,7 +66,7 @@ public class PlayerListCommand extends MasterCommand {
                 if(J2MC_Manager.getPermissions().hasFlag(pl.getName(), 'd')){
                     toAdd = ChatColor.GOLD + pl.getName();
                 }
-                if(pl.hasPermission("j2mc-chat.mute")){
+                if(pl.hasPermission("j2mc.chat.mute")){
                     toAdd = ChatColor.YELLOW + pl.getName();
                 }
                 if(pl.hasPermission("j2mc.core.admin")){
@@ -76,7 +76,7 @@ public class PlayerListCommand extends MasterCommand {
                     toAdd = ChatColor.AQUA + pl.getName();
                 }
                 if(J2MC_Manager.getPermissions().hasFlag(pl.getName(), 'N')){
-                    toAdd += ChatColor.DARK_AQUA + "«»";
+                    toAdd += ChatColor.DARK_AQUA + "\u00ab\u00bb";
                 }
                 if(J2MC_Manager.getPermissions().hasFlag(pl.getName(), 'k')){
                     toAdd += ChatColor.RED + "&";
