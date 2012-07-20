@@ -40,7 +40,7 @@ public class J2MC_Info extends JavaPlugin implements Listener {
         this.getCommand("who").setExecutor(new PlayerListCommand(this));
         this.getCommand("lastseen").setExecutor(new LastSeenCommand(this));
 
-        this.getServer().getScheduler().scheduleAsyncDelayedTask(this, new Runnable() {
+        this.getServer().getScheduler().scheduleSyncRepeatingTask(this, new Runnable() {
             int currentLine = 0;
 
             @Override
@@ -54,7 +54,7 @@ public class J2MC_Info extends JavaPlugin implements Listener {
                     }
                 }
             }
-        }, 4800);
+        }, 4800, 4800);
         this.getServer().getPluginManager().registerEvents(this, this);
         this.getLogger().info("Info module enabled");
     }
