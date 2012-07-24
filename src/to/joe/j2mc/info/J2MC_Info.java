@@ -44,7 +44,7 @@ public class J2MC_Info extends JavaPlugin implements Listener {
 
             @Override
             public void run() {
-                Bukkit.broadcastMessage(ChatColor.BLUE + J2MC_Info.this.repeatingBroadcasts.get(this.currentLine));
+                Bukkit.broadcast(ChatColor.BLUE + J2MC_Info.this.repeatingBroadcasts.get(this.currentLine), "j2mc.chat.receive");
                 if (this.currentLine == (J2MC_Info.this.repeatingBroadcasts.size() - 1)) {
                     this.currentLine = 0;
                 } else {
