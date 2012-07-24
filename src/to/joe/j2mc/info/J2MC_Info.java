@@ -3,15 +3,14 @@ package to.joe.j2mc.info;
 import java.util.Arrays;
 import java.util.List;
 
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
-import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import to.joe.j2mc.core.J2MC_Manager;
 import to.joe.j2mc.info.command.LastSeenCommand;
 import to.joe.j2mc.info.command.PlayerListCommand;
 import to.joe.j2mc.info.command.ReloadInfoCommand;
@@ -45,13 +44,11 @@ public class J2MC_Info extends JavaPlugin implements Listener {
 
             @Override
             public void run() {
-                for (final Player plr : J2MC_Manager.getVisibility().getOnlinePlayers(null)) {
-                    plr.sendMessage(ChatColor.AQUA + J2MC_Info.this.repeatingBroadcasts.get(this.currentLine));
-                    if (this.currentLine == (J2MC_Info.this.repeatingBroadcasts.size() - 1)) {
-                        this.currentLine = 0;
-                    } else {
-                        this.currentLine++;
-                    }
+                Bukkit.broadcastMessage(ChatColor.BLUE + J2MC_Info.this.repeatingBroadcasts.get(this.currentLine));
+                if (this.currentLine == (J2MC_Info.this.repeatingBroadcasts.size() - 1)) {
+                    this.currentLine = 0;
+                } else {
+                    this.currentLine++;
                 }
             }
         }, 4800, 4800);
