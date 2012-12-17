@@ -8,13 +8,10 @@ import org.bukkit.entity.Player;
 import to.joe.j2mc.core.command.MasterCommand;
 import to.joe.j2mc.info.J2MC_Info;
 
-public class LastSeenCommand extends MasterCommand {
-
-    J2MC_Info plugin;
+public class LastSeenCommand extends MasterCommand<J2MC_Info> {
 
     public LastSeenCommand(J2MC_Info instance) {
         super(instance);
-        this.plugin = instance;
     }
 
     @Override

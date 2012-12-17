@@ -8,13 +8,10 @@ import to.joe.j2mc.core.J2MC_Manager;
 import to.joe.j2mc.core.command.MasterCommand;
 import to.joe.j2mc.info.J2MC_Info;
 
-public class PlayerListCommand extends MasterCommand {
-
-    J2MC_Info plugin;
+public class PlayerListCommand extends MasterCommand<J2MC_Info> {
 
     public PlayerListCommand(J2MC_Info Info) {
         super(Info);
-        this.plugin = Info;
     }
 
     @Override
