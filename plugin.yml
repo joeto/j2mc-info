@@ -19,7 +19,7 @@ commands:
     permission: j2mc.info.worldguard
     permission-message: Not functional on this server
   who:
-    aliases: [playerlist]
+    aliases: [playerlist, list]
     description: oh god player list
     usage: /who
   lastseen:
