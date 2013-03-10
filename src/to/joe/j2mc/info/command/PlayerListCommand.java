@@ -31,63 +31,64 @@ public class PlayerListCommand extends MasterCommand<J2MC_Info> {
         }
 
         for (final Player user : online) {
+            StringBuilder nameBuilder = new StringBuilder();
             if (detail) {
                 String name = user.getName();
                 final HashSet<Character> flags = J2MC_Manager.getPermissions().getFlags(name);
 
                 if (flags.isEmpty()) {
-                    sb.append(ChatColor.GREEN + name + ", ");
+                    nameBuilder.append(ChatColor.GREEN).append(name);
                 } else {
-                    for (final Character flag : flags) {
-                        if (J2MC_Manager.getVisibility().isVanished(user)) { // Vanished
-                            name = ChatColor.AQUA + name;
-                        } else if (flag == 's') { // Senior
-                            name = ChatColor.DARK_RED + name;
-                        } else if (flag == 'a') { // Admin
-                            name = ChatColor.RED + name;
-                        } else if (flag == 'd') { // Donator
-                            name = ChatColor.GOLD + name;
-                        } else if (flag == 't') { // Trusted
-                            name = ChatColor.DARK_GREEN + name;
-                        } else { // Normal
-                            name = ChatColor.GREEN + name;
-                        }
+                    boolean markedTrusted = false;
+                    if (J2MC_Manager.getVisibility().isVanished(user)) { // Vanished
+                        nameBuilder.append(ChatColor.AQUA);
+                    } else if (flags.contains('s')) { // Senior
+                        nameBuilder.append(ChatColor.DARK_RED);
+                    } else if (flags.contains('a')) { // Admin
+                        nameBuilder.append(ChatColor.RED);
+                    } else if (flags.contains('d')) { // Donator
+                        nameBuilder.append(ChatColor.GOLD);
+                    } else if (flags.contains('t')) { // Trusted
+                        nameBuilder.append(ChatColor.DARK_GREEN);
+                        markedTrusted = true;
+                    } else { // Normal
+                        nameBuilder.append(ChatColor.GREEN);
+                    }
+                    nameBuilder.append(name);
 
-                        // Trusted
-                        if ((flag == 't') && !name.contains(ChatColor.DARK_GREEN.toString())) {
-                            name += ChatColor.DARK_GREEN + "[T]";
-                        }
-
-                        // Muted
-                        if (flag == 'M') {
-                            name += ChatColor.YELLOW + "[M]";
-                        }
-
-                        // NSA
-                        if (flag == 'N') {
-                            name += ChatColor.RED + "\u00ab\u00bb";
-                        }
-
-                        // Teleport Banned
-                        if (flag == 'T') {
-                            name += ChatColor.STRIKETHROUGH + "[TP]" + ChatColor.RESET;
-                        }
-
-                        // Harassed
-                        if (flag == 'H') {
-                            name += ChatColor.AQUA + "[H]";
-                        }
+                    // Trusted
+                    if ((flags.contains('t')) && !markedTrusted) {
+                        nameBuilder.append(ChatColor.DARK_GREEN).append("[T]");
                     }
 
-                    name += ChatColor.WHITE + ", ";
-                    sb.append(name);
+                    // Muted
+                    if (flags.contains('M')) {
+                        nameBuilder.append(ChatColor.YELLOW).append("[M]");
+                    }
+
+                    // NSA
+                    if (flags.contains('N')) {
+                        nameBuilder.append(ChatColor.RED).append("\u00ab\u00bb");
+                    }
+
+                    // Teleport Banned
+                    if (flags.contains('T')) {
+                        nameBuilder.append(ChatColor.STRIKETHROUGH).append("[TP]").append(ChatColor.RESET);
+                    }
+
+                    // Harassed
+                    if (flags.contains('H')) {
+                        nameBuilder.append(ChatColor.AQUA).append("[H]");
+                    }
+
                 }
             } else {
-                sb.append(user.getDisplayName() + ", ");
+                nameBuilder.append(user.getDisplayName());
             }
-
-            sb.setLength(sb.length() - 2);
-            sender.sendMessage(sb.toString());
+            nameBuilder.append(ChatColor.RESET).append(", ");
+            sb.append(nameBuilder.toString());
         }
+        sb.setLength(sb.length() - 2);
+        sender.sendMessage(sb.toString());
     }
 }
