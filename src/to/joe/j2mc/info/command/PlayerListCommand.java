@@ -73,7 +73,7 @@ public class PlayerListCommand extends MasterCommand<J2MC_Info> {
 
                     // Teleport Banned
                     if (flags.contains('T')) {
-                        nameBuilder.append(ChatColor.STRIKETHROUGH).append("[TP]").append(ChatColor.RESET);
+                        nameBuilder.append(ChatColor.GRAY).append(ChatColor.STRIKETHROUGH).append("[TP]").append(ChatColor.RESET);
                     }
 
                     // Harassed
