@@ -13,11 +13,6 @@ commands:
     usage: /reloadinfo
     permission: j2mc.info.reload
     permission-message: You are not senior staff
-  worldguardhelp:
-    description: gives some basic protection help
-    usage: /wordguardhelp
-    permission: j2mc.info.worldguard
-    permission-message: Not functional on this server
   who:
     aliases: [playerlist, list]
     description: oh god player list
@@ -29,5 +24,3 @@ commands:
 permissions:
   j2mc.info.reload:
     descriptions: gives access to /reloadinfo
-  j2mc.info.worldguard:
-    description: Get access to the worldguard info

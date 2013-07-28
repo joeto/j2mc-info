@@ -15,7 +15,6 @@ import to.joe.j2mc.info.command.LastSeenCommand;
 import to.joe.j2mc.info.command.PlayerListCommand;
 import to.joe.j2mc.info.command.ReloadInfoCommand;
 import to.joe.j2mc.info.command.RulesCommand;
-import to.joe.j2mc.info.command.WorldGuardHelpCommand;
 
 public class J2MC_Info extends JavaPlugin implements Listener {
 
@@ -35,7 +34,6 @@ public class J2MC_Info extends JavaPlugin implements Listener {
         this.readData();
         this.getCommand("rules").setExecutor(new RulesCommand(this));
         this.getCommand("reloadinfo").setExecutor(new ReloadInfoCommand(this));
-        this.getCommand("worldguardhelp").setExecutor(new WorldGuardHelpCommand(this));
         this.getCommand("who").setExecutor(new PlayerListCommand(this));
         this.getCommand("lastseen").setExecutor(new LastSeenCommand(this));
 
